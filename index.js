@@ -1,9 +1,17 @@
-var user_name;
 var list = $('#storyList');
 let count = 0;
 let stories = [];
 
 $(function() {
+  /* check if the user has logged in previously */
+  var username = localStorage.getItem('username');
+  var token = localStorage.getItem('token');
+
+  if (username && token) {
+    $('#loginLink').hide();
+    $('#signUpLink').hide();
+  }
+
   $.getJSON('https://hack-or-snooze.herokuapp.com/stories?skip=0&limit=10')
     .then(function(data) {
       // data.data.forEach(function(name) {
@@ -16,6 +24,23 @@ $(function() {
     .catch(function(error) {
       console.log(error);
     });
+
+  $('#loginLink').on('click', function() {
+    $('#signUpForm').hide();
+    $('#loginForm').slideToggle();
+  });
+
+  $('#signUpLink').on('click', function() {
+    $('#loginForm').hide();
+    $('#signUpForm').slideToggle();
+  });
+
+  $('#submitBtn').on('click', function() {
+    $('#submitForm').slideToggle();
+  });
+
+  $('#loginForm').submit(logIn);
+  $('#submitForm').submit(submit);
 });
 
 function displayTenStories(d) {
@@ -24,20 +49,6 @@ function displayTenStories(d) {
     // console.log(name.title);
   });
 }
-
-$('#loginLink').on('click', function() {
-  $('#signUpForm').hide();
-  $('#loginForm').slideToggle();
-});
-
-$('#signUpLink').on('click', function() {
-  $('#loginForm').hide();
-  $('#signUpForm').slideToggle();
-});
-
-$('#submitBtn').on('click', function() {
-  $('#submitForm').slideToggle();
-});
 
 function logIn(event) {
   event.preventDefault();
@@ -104,6 +115,3 @@ function submit(event) {
       console.log(error);
     });
 }
-
-$('#loginForm').submit(logIn);
-$('#submitForm').submit(submit);
