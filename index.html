@@ -25,7 +25,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" data-toggle='collapse' data-target='form'>Submit</a>
+            <a class="nav-link" data-toggle='collapse' data-target='form' id='submitBtn'>Submit</a>
           </li>
           <li class="nav-item">
             <a class="nav-link">Favorites</a>
@@ -40,8 +40,31 @@
       </div>
     </nav>
     <div class='body'>
+        <div class='collapse' id='submitForm'>
+            <form>
+                <div class="form-group">
+                    <label for="submit_title">Title: </label>
+                    <input type="text" class="form-control" id="submit_title" placeholder="Enter title">
+                  </div>
+
+                  <div class="form-group">
+                      <label for="submit_author">Author: </label>
+                      <input type="text" class="form-control" id="submit_author" placeholder="Enter author">
+                    </div>
+
+                <div class="form-group">
+                  <label for="submit_url">Url: </label>
+                  <input type="url" class="form-control" id="submit_url" placeholder="Enter url">
+                </div>
+            
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+        </div>
+
+
+
       <div class='collapse' id='loginForm'>
-        <form>
+        <form id='logForm'>
           <div class="form-group">
             <label for="login_username">Email address</label>
             <input type="text" class="form-control" id="login_username" placeholder="Username">
