@@ -3,8 +3,12 @@ $(function() {
   var username = localStorage.getItem('username');
   var token = localStorage.getItem('token');
 
+  if ($('#login_link').text() === 'Logout') {
+    $('#login_link').on('click', logOut);
+  }
+
   if (username && token) {
-    $('#login_link').hide();
+    $('#login_link').text('Logout');
     $('#signup_link').hide();
   }
 
@@ -42,6 +46,8 @@ $(function() {
     $(e.target).toggleClass('fas fa-star far fa-star');
     addtoFavorites();
   });
+
+  $();
 });
 
 function displayTenStories(d) {
@@ -79,13 +85,20 @@ function logIn(event) {
       localStorage.setItem('username', user_name);
       $('#login_form_container').slideToggle();
       $('#login_form_container > form')[0].reset();
-      $('#login_link').hide();
       $('#signup_link').hide();
+      $('#login_link').text('Logout');
       console.log(msg);
     })
     .catch(function(error) {
       console.log(error);
     });
+}
+
+function logOut() {
+  //remove username and password from local storage.
+  localStorage.removeItem('username');
+  localStorage.removeItem('token');
+  $('#login_link').text('Login');
 }
 
 function submit(event) {

@@ -20,3 +20,7 @@ body {
 .body {
   background-color: #fff;
 }
+
+#login_link {
+  align-self: flex-end;
+}
