@@ -3,8 +3,12 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.button.newStory {
-  /* display: inline-block; */
+ol {
+  margin-top: 10px;
+}
+
+ol li {
+  padding: 5px;
 }
 
 .container {
@@ -17,17 +21,12 @@ body {
   background-color: #ff6600;
 }
 
-.body {
-  background-color: #fff;
-  height: 80%;
+.main {
+  background-color: white;
+  border-radius: 0px 0px 10px 10px;
+  padding: 20px;
 }
 
 #login_link {
   align-self: flex-end;
-}
-
-#user_profile {
-  position: absolute;
-  margin-left: 300px;
-  margin-top: 100px;
 }
